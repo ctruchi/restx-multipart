@@ -3,18 +3,13 @@ package restx.multipart;
 import com.google.common.base.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import restx.common.TypeReference;
 import restx.entity.EntityDefaultContentTypeProvider;
-import restx.entity.EntityRequestBodyReader;
 import restx.entity.EntityRequestBodyReaderFactory;
-import restx.entity.EntityResponseWriter;
-import restx.entity.EntityResponseWriterFactory;
 import restx.factory.Module;
 import restx.factory.Provides;
 
 import javax.servlet.http.Part;
 import java.lang.reflect.Type;
-import java.util.Collection;
 import java.util.Locale;
 
 @Module
@@ -47,20 +42,6 @@ public class MultipartFormDataContentTypeModule {
                     return Optional.absent();
                 }
                 return Optional.of(new FormDataEntityRequestBodyReader());
-            }
-        };
-    }
-
-    @Provides
-    public EntityResponseWriterFactory formDataEntityResponseWriterFactory() {
-        return new EntityResponseWriterFactory() {
-            @Override
-            public Optional<FormDataEntityResponseWriter> mayBuildFor(Type valueType, String contentType) {
-                if (!contentType.toLowerCase(Locale.ENGLISH).startsWith(FORM_DATA_CONTENT_TYPE)) {
-                    return Optional.absent();
-                }
-
-                return Optional.of(new FormDataEntityResponseWriter());
             }
         };
     }
