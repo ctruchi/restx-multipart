@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.restx</groupId>
     <artifactId>restx-multipart</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.3-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>restx-multipart</name>
 
@@ -12,7 +13,7 @@
         <connection>scm:git:git@github.com:ctruchi/restx-multipart.git</connection>
         <developerConnection>scm:git:git@github.com:ctruchi/restx-multipart.git</developerConnection>
         <url>https://github.com/ctruchi/restx-multipart.git</url>
-    </scm>
+  </scm>
 
     <distributionManagement>
         <repository>
@@ -26,9 +27,9 @@
     </distributionManagement>
 
     <properties>
-        <maven.compiler.target>1.7</maven.compiler.target>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <restx.version>0.34</restx.version>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <restx.version>1.0.0-rc2</restx.version>
     </properties>
 
     <dependencies>
@@ -39,8 +40,25 @@
         </dependency>
         <dependency>
             <groupId>io.restx</groupId>
-            <artifactId>restx-server-jetty</artifactId>
+            <artifactId>restx-servlet</artifactId>
             <version>${restx.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.restx</groupId>
+            <artifactId>restx-core-annotation-processor</artifactId>
+            <version>${restx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.restx</groupId>
+            <artifactId>restx-factory-annotation-processor</artifactId>
+            <version>${restx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>5.0.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
